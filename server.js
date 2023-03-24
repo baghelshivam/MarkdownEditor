@@ -1,10 +1,12 @@
-express = require("express");
+const express = require("express");
+const markdown = require("./routes/markdown");
 
 const app = express();
-app.use(express.static("/public"));
-
 const PORT = process.env.PORT || 3001;
 
+app.use("/markdown",markdown);
+app.use(express.static(__dirname + "/public"));
+
 app.listen(PORT, () => {
-  console.log(`Listening on ${PORT} `);
+  console.log(`Listning on the Port ${PORT}`);
 });
